@@ -25,7 +25,7 @@ jobs:
       - name: Build and push Docker image
         run: |
           cd docker  # Change to the directory where the Dockerfile is
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/cicd-express-app:latest ./app
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/cicd-express-app:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/cicd-express-app:latest
 
       # Step 4: SSH into EC2 and deploy the Docker container
