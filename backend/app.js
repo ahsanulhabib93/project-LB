@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+// Fetch server name from environment variables
+const serverName = process.env.SERVER_NAME || "undefined";
 
 app.get('/', (req, res) => {
-    res.send(`Hello from Backend Server! - ${process.env.SERVER_NAME}`);
+  res.send(`Hello from Backend Server! - ${serverName}`);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on fine on port ${PORT}`));
