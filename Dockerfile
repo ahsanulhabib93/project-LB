@@ -18,7 +18,7 @@ WORKDIR /usr/src/app
 
 # Copy only necessary files from builder
 COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/server.js .
+COPY --from=builder /usr/src/app/app.js .
 
 EXPOSE 3000
 
