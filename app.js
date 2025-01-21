@@ -5,7 +5,7 @@ const app = express();
 const serverName = process.env.SERVER_NAME || "undefined";
 
 app.get('/', (req, res) => {
-  res.send(`Hi baby am sorry!reply me if see this on gchat - ${serverName}`);
+  res.send(`Hi This is test - ${serverName}`);
 });
 
 const PORT = process.env.PORT || 3000;
