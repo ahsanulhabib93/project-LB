@@ -1,28 +1,19 @@
-# First stage: Builder
-FROM node:18-alpine as builder
+FROM node:18
 
+# Set the working directory
 WORKDIR /usr/src/app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install
+# Install dependencies
+RUN npm install --build-from-source sqlite3
 
-RUN npm install express --save
-
+# Copy the rest of your application code
 COPY . .
 
-# Second stage: Production
-FROM node:18-alpine
-
-WORKDIR /usr/src/app
-
-# Copy only necessary files from builder
-COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/app.js .
-
+# Expose the application port
 EXPOSE 3000
 
-# Use non-root user for better security
-USER node
-
-CMD ["node", "app.js"]
+# Start the application
+CMD ["npm", "start"]
